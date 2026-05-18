@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Awekk🐰💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffeef2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Halaman Depan (Front Page) */
+        .front-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffeef2, #ffcad4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .front-page.hide {
+            transform: translateY(-100%);
+        }
+
+        .bunny-art {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Halaman Utama */
+        .main-page {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Bagian Konten (Video, Gambar, Nota) */
+        .content-box {
+            width: 100%;
+            border: 2px dashed #ffb3c1;
+            border-radius: 15px;
+            padding: 15px;
+            background-color: #fff5f7;
+        }
+
+        .content-box video, .content-box img {
+            width: 100%;
+            max-height: 250px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .note {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+
+        /* Bagian Tombol Interaktif */
+        .btn-container {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: absolute;
+        }
+
+        .btn-yes {
+            background-color: #ff4d6d;
+            color: white;
+            left: 15%;
+            top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+
+        .btn-no {
+            background-color: #bcc4cc;
+            color: white;
+            right: 15%;
+            top: 20px;
+        }
+
+        /* Tombol Masuk di Halaman Depan */
+        .btn-enter {
+            position: static;
+            background-color: #ff758f;
+            color: white;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efek Cahaya / Kembang Api Kecil */
+        .sparkle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            pointer-events: none;
+            z-index: 999;
+            animation: fly 1s ease-out forwards;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FRONT PAGE -->
+    <div class="front-page" id="frontPage">
+        <div class="bunny-art">🐰💗</div>
+        <h1 style="color: #ff4d6d;">Ada pesan dari Kelantan</h1>
+        <button class="btn btn-enter" onclick="masukHalaman()">Tekan ✨</button>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="main-page">
+        <h1>Hi Awekku 🌸</h1>
+        
+        <!-- Bagian Konten: Ganti sumber gambar/video di bawah ini -->
+        <div class="content-box">
+            <!-- Contoh Gambar (Ganti src dengan link gambarmu) -->
+            <img src="awekku.jpg" alt="Foto Kita">
+            
+            <!-- Contoh Video (Ganti src dengan link videomu jika ada, atau hapus jika tidak pakai) -->
+            <!-- <video src="videomu.mp4" controls></video> -->
+
+            <!-- Nota / Pesan -->
+            <div class="note">
+                "Gambar Secantik💕"
+            </div>
+        </div>
+
+        <h3 style="color: #ff758f; margin-top: 10px;">Semangat Tau Esok lari dan lompat jauh👇</h3>
+
+        <!-- CONTAINER TOMBOL INTERAKTIF -->
+        <div class="btn-container">
+            <button class="btn btn-yes" onclick="efekCahaya(event)">Semangat</button>
+            <button class="btn btn-no" id="btnNo" onmouseover="lariLari()">Malas</button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk masuk dari Front Page
+        function masukHalaman() {
+            document.getElementById('frontPage').classList.add('hide');
+        }
+
+        // Fungsi membuat tombol "Tidak" kabur saat didekati kursor
+        function lariLari() {
+            const btnNo = document.getElementById('btnNo');
+            
+            // Jarak lari acak (masih di sekitar area layar pacar)
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 80);
+            
+            // Mengubah posisi tombol menjadi fixed agar bebas lari kemana saja
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        }
+
+        // Fungsi memunculkan efek cahaya gemerlap saat tombol YES ditekan
+        function efekCahaya(event) {
+            const colors = ['#ffe5ec', '#ffb3c1', '#ff758f', '#ff4d6d', '#fff', '#ffd166'];
+            
+            // Membuat 50 partikel cahaya acak
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                
+                // Set warna acak
+                sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Posisi awal di tombol yang ditekan
+                sparkle.style.left = event.clientX + 'px';
+                sparkle.style.top = event.clientY + 'px';
+                
+                // Arah ledakan cahaya acak (X dan Y)
+                const sX = (Math.random() - 0.5) * 300;
+                const sY = (Math.random() - 0.5) * 300;
+                sparkle.style.setProperty('--x', sX + 'px');
+                sparkle.style.setProperty('--y', sY + 'px');
+                
+                // Ukuran acak
+                const size = Math.random() * 15 + 5;
+                sparkle.style.width = size + 'px';
+                sparkle.style.height = size + 'px';
+
+                document.body.appendChild(sparkle);
+
+                // Hapus partikel setelah animasi selesai
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+            
+            // Opsional: Alert manis setelah ditekan
+            setTimeout(() => {
+                alert("Yeeay! Awekku kan boleh 💖✨");
+            }, 500);
+        }
+    </script>
+</body>
+</html>
